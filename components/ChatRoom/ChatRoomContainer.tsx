@@ -82,13 +82,11 @@ const ChatRoomContainer = ({
           (user: any) => user._id !== id
         )[0]?.name;
         dispatch(add({ ...chatRoomData, chatName }));
-      } else {
-        setMessageData([]);
       }
     }
   }, [isFetching, isChatRoomFetching]);
   useEffect(() => {
-    // setMessageData([]);
+    setMessageData([]);
     if (!data?.friendMood) {
       console.log("gjoegjo");
       refetch();
@@ -120,6 +118,9 @@ const ChatRoomContainer = ({
       inline: "nearest",
     });
   };
+  // useEffect(() => {
+
+  // }, []);
   useEffect(() => {
     scrollToBottom();
   }, [messageData]);
