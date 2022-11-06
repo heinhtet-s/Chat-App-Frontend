@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.text-rotate {
+  animation: rotation 3s 1s infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotation {
+  0% {
+    transform: translateY(21px);
+  }
+
+  25% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-21px);
+  }
+
+  75% {
+    transform: translateY(-42px);
+  }
+  100% {
+    transform: translateY(-63px);
+  }
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+#rfs-btn {
+  font-size: 14px;
+  border: none;
+  /* padding: 0px; */
+  height: 28px;
+  padding-bottom: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+  }
+}
