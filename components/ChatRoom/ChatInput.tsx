@@ -30,6 +30,10 @@ const ChatInput = ({
     setMessage(e.target.value);
     setIsTyping(true);
   };
+  useEffect(() => {
+    setMessage("");
+  }, [chatId]);
+
   const { isLoading: depositLoading, mutate: sendMutate } = usePostQuery(
     `api/message`,
     {
@@ -37,28 +41,10 @@ const ChatInput = ({
         setMessageData([...messageData, data?.data]);
         console.log(data);
         socket.emit("new message", data?.data);
-        // Swal.fire({
-        //   title: "Success!",
-        //   width: 450,
-        //   text: data?.data?.message,
-        //   icon: "success",
-        //   confirmButtonText: "<p style='width: 100px;fontSize: 17px'>OK !</p>",
-        // });
+        setMessage("");
       },
       onError: (error: any) => {
         console.log(error);
-        // if (error?.response?.data?.errors) {
-        //   setValidationError(error?.response?.data?.errors);
-        // } else {
-        //   Swal.fire({
-        //     title: "Error!",
-        //     width: 450,
-        //     text: error?.response?.data?.message || error?.data?.message,
-        //     icon: "error",
-        //     confirmButtonText:
-        //       "<p style='width: 100px;fontSize: 17px'>OK !</p>",
-        //   });
-        // }
       },
     }
   );
